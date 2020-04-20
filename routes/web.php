@@ -74,3 +74,9 @@ Route::post('testing/postcreate', [
 ]);
 
 Route::get('/design_type', 'HomeController@design_type')->name('design_type');
+Route::get('design_type/create', [
+    'as' => 'design_type.create', 'uses' => 'HomeController@design_type_create'
+]);
+Route::post('design_type/postcreate', [
+    'as' => 'design_type.postcreate', 'uses' => 'HomeController@design_type_postcreate'
+]);

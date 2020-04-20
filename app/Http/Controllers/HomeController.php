@@ -10,7 +10,7 @@ use App\Model\ImplementationModel;
 use App\Model\TestingModel;
 use App\Model\MaintananceModel;
 use App\Model\ProjectModel;
-use App\Model\DesignType;
+use App\Model\DesignTypeModel;
 use App\Model\DeveloperModel;
 use Auth;
 
@@ -124,7 +124,7 @@ class HomeController extends Controller
 
     public function design_create()
     {
-        $data['design_type'] = DesignType::all();
+        $data['design_type'] = DesignTypeModel::all();
         return view('design.create', $data);
     } 
 
@@ -148,6 +148,12 @@ class HomeController extends Controller
     {                
         return view('testing.create');
     }             
+
+    public function design_type_create()
+    {                
+        return view('design_type.create');
+    }             
+
 
     public function requirement_postcreate(Request $request)
     {
@@ -215,7 +221,18 @@ class HomeController extends Controller
         $insert->save();
 
         return redirect()->route('testing')->withMessage('Testing Success Added!');
-    }             
+    }    
+
+    public function design_type_postcreate(Request $request)
+    {
+        $insert = new DesignTypeModel();                
+        $insert->design_type_name = $request->design_type_name;   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('design_type')->withMessage('Design Type Success Added!');
+    }                 
 
     public function user()
     {
