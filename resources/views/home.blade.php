@@ -8,7 +8,7 @@
     <section class="content-header">
       <h1>
         Widgets
-        <small>{{ $date_all->project_name }}</small>
+        <small>{{ isset($date_all->project_name) ? $date_all->project_name : '' }}</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

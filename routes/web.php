@@ -80,3 +80,15 @@ Route::get('design_type/create', [
 Route::post('design_type/postcreate', [
     'as' => 'design_type.postcreate', 'uses' => 'HomeController@design_type_postcreate'
 ]);
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+});
+
+Route::get('/testing_document_type', 'HomeController@testing_document_type')->name('testing_document_type');
+Route::get('testing_document_type/create', [
+    'as' => 'testing_document_type.create', 'uses' => 'HomeController@testing_document_type_create'
+]);
+Route::post('testing_document_type/postcreate', [
+    'as' => 'testing_document_type.postcreate', 'uses' => 'HomeController@testing_document_type_postcreate'
+]);

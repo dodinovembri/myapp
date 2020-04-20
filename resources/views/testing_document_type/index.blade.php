@@ -24,7 +24,7 @@
             <div class="box">
               <div class="box-header">
                 <h3 class="box-title">Data Table With Full Features</h3><br><br>
-                <a href="{{ route('testing.create') }}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add New</button></a>
+                <a href="{{ route('testing_document_type.create') }}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add New</button></a>
 
                 @if(session()->has('message'))
                 <br><br>
@@ -51,21 +51,19 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>List Bug ID</th>
-                    <th>Project Name</th>                    
-                    <th>Testing Name</th>                    
-                    <th>Ket</th>                    
+                    <th>Document Code</th>                    
+                    <th>Document Type</th>                    
+                    <th>Created By</th>
                     <th>Created At</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <?php $no = 0; foreach ($testing as $key => $value) { $no++; ?>
+                  <?php $no = 0; foreach ($testing_document_type as $key => $value) { $no++; ?>
   	                <tr>
-                      <td>{{ $no }}</td>                      
-                      <td><u><a href="{{ $value->url_testing }}" target="_blank">{{ $value->id_testing_document_type }}-{{ $value->id }}</a></u></td>
-                      <td>{{ $value->id_project }}</td>                    
-                      <td>{{ $value->testing_name }}</td>                                                          
-  	                  <td>{{ $value->ket }}</td>  	                                                                         
+                      <td>{{ $no }}</td>
+                      <td>{{ $value->document_code }}</td>                     
+                      <td>{{ $value->document_type }}</td>                     
+                      <td>{{ $value->created_by }}</td>                      
   	                  <td>{{ $value->created_at }}</td>	                  	                  
   	                </tr>                   	
                   <?php } ?>          

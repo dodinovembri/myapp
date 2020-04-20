@@ -29,32 +29,20 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" method="POST" action="{{route('testing.postcreate')}}">              
-                @csrf
+              <form role="form" method="POST" action="{{route('testing_document_type.postcreate')}}">              
+                @csrf                
                 <div class="form-group">
-                  <label>Testing Document Type</label>
-                  <select class="form-control" name="testing_document_type" required>
-                    <option>Select</option>
-                    <?php foreach ($testing_document_type as $key => $value) { ?>
-                      <option value="{{ $value->document_code }}">{{ $value->document_type}}</option>
-                    <?php } ?>                    
-                  </select>
-                </div>                
+                  <label>Document Code</label>
+                  <input type="text" class="form-control" name="document_code" placeholder="Enter ..." required>
+                </div> 
                 <div class="form-group">
-                  <label>Testing Name</label>
-                  <input type="text" class="form-control" name="testing_name" placeholder="Enter ..." required>
-                </div>              
-                <div class="form-group">
-                  <label>Testing URL</label>
-                  <input type="text" class="form-control" name="testing_url" placeholder="Enter ..." required>
-                </div>       
-                <div class="form-group">
-                  <label>Ket</label>
-                  <textarea name="ket" class="form-control" rows="7" placeholder="Enter ..."></textarea>
-                </div>                           
+                  <label>Document Type Name</label>
+                  <input type="text" class="form-control" name="document_type" placeholder="Enter ..." required>
+                </div>                                               
                 <br>
                 <button type="submit" class="btn btn-success">Save</button>
                 <button type="button" class="btn btn-danger">Cancel</button>
+
               </form>
             </div>
             <!-- /.box-body -->

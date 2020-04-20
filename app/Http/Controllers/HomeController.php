@@ -12,6 +12,7 @@ use App\Model\MaintananceModel;
 use App\Model\ProjectModel;
 use App\Model\DesignTypeModel;
 use App\Model\DeveloperModel;
+use App\Model\TestingDocumentType;
 use Auth;
 
 
@@ -88,7 +89,7 @@ class HomeController extends Controller
     public function testing()
     {
         if (session()->get('project_now')) {
-            $id = session()->get('project_now');
+            $id = session()->get('project_now');            
             $data['testing'] = TestingModel::where('id_project', $id)->get();
         }
 
@@ -114,9 +115,6 @@ class HomeController extends Controller
     public function set_session($id)
     {        
         session()->put('project_now', $id);  
-        // return url()->full();
-        // return session()->get('project_now');
-        // return URL::current();  
         return redirect()->back();        
     } 
 
@@ -149,7 +147,8 @@ class HomeController extends Controller
 
     public function testing_create()
     {                
-        return view('testing.create');
+        $data['testing_document_type'] = TestingDocumentType::all();
+        return view('testing.create', $data);
     }             
 
     public function design_type_create()
@@ -157,6 +156,10 @@ class HomeController extends Controller
         return view('design_type.create');
     }             
 
+    public function testing_document_type_create()
+    {                
+        return view('testing_document_type.create');
+    } 
 
     public function requirement_postcreate(Request $request)
     {
@@ -216,6 +219,7 @@ class HomeController extends Controller
     {
         $insert = new TestingModel();        
         $insert->id_project = session()->get('project_now');
+        $insert->id_testing_document_type = $request->testing_document_type;
         $insert->testing_name = $request->testing_name;
         $insert->url_testing = $request->testing_url;
         $insert->ket = $request->ket;        
@@ -235,6 +239,18 @@ class HomeController extends Controller
         $insert->save();
 
         return redirect()->route('design_type')->withMessage('Design Type Success Added!');
+    }    
+   
+    public function testing_document_type_postcreate(Request $request)
+    {
+        $insert = new TestingDocumentType();                
+        $insert->document_code = $request->document_code;   
+        $insert->document_type = $request->document_type;   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('testing_document_type')->withMessage('Testing Dcument Type Success Added!');
     }                 
 
     public function user()
@@ -254,4 +270,11 @@ class HomeController extends Controller
         $data['design_type'] = DesignTypeModel::all();
         return view('design_type.index', $data);
     }
+    
+
+    public function testing_document_type()
+    {
+        $data['testing_document_type'] = TestingDocumentType::all();
+        return view('testing_document_type.index', $data);
+    }    
 }

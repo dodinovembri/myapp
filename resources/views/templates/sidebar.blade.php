@@ -75,6 +75,7 @@
             <li><a href="{{ route('user') }}"><i class="fa fa-circle-o"></i> Users</a></li>
             <li><a href="{{ route('developer') }}"><i class="fa fa-circle-o"></i> Developers</a></li>
             <li><a href="{{ route('design_type') }}"><i class="fa fa-circle-o"></i> Design Type</a></li>
+            <li><a href="{{ route('testing_document_type') }}"><i class="fa fa-circle-o"></i> Testing Document Type</a></li>            
           </ul>
         </li>        
         <li>         
