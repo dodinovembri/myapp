@@ -113,6 +113,7 @@ class HomeController extends Controller
 
     public function set_session($id)
     {
+        session()->forget('project_now');
         session()->put('project_now', $id);
         return back();        
     } 
