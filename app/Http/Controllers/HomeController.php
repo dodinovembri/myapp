@@ -112,10 +112,12 @@ class HomeController extends Controller
     }   
 
     public function set_session($id)
-    {
-        session()->forget('project_now');
-        session()->put('project_now', $id);
-        return back();        
+    {        
+        session()->put('project_now', $id);  
+        // return url()->full();
+        // return session()->get('project_now');
+        // return URL::current();  
+        return redirect()->back();        
     } 
 
     public function requirement_create()
