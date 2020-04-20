@@ -91,6 +91,7 @@ class HomeController extends Controller
         if (session()->get('project_now')) {
             $id = session()->get('project_now');            
             $data['testing'] = TestingModel::where('id_project', $id)->get();
+            // $data['testing'] = TestingModel::select('testing.*', 'project.project_name as project_name')->join('project', 'testing.id_project', '=', 'project.id')->where('testing.id_project', '=', $id)->get();
         }
 
         return view('testing.index',  $data);

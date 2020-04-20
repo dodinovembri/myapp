@@ -51,8 +51,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>List Bug ID</th>
-                    <th>Project Name</th>                    
+                    <th>List Bug ID</th>                                  
                     <th>Testing Name</th>                    
                     <th>Ket</th>                    
                     <th>Created At</th>
@@ -62,8 +61,7 @@
                   <?php $no = 0; foreach ($testing as $key => $value) { $no++; ?>
   	                <tr>
                       <td>{{ $no }}</td>                      
-                      <td><u><a href="{{ $value->url_testing }}" target="_blank">{{ $value->id_testing_document_type }}-{{ $value->id }}</a></u></td>
-                      <td>{{ $value->id_project }}</td>                    
+                      <td><u><a href="{{ $value->url_testing }}" target="_blank">{{ $value->id_testing_document_type }}-{{ $value->id }}</a></u></td>                                      
                       <td>{{ $value->testing_name }}</td>                                                          
   	                  <td>{{ $value->ket }}</td>  	                                                                         
   	                  <td>{{ $value->created_at }}</td>	                  	                  
