@@ -24,7 +24,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3> <br><br>
-              <a href="{{ route('project.create') }}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add New</button></a>
+              <a href="{{ route('project_status.create') }}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add New</button></a>
                 @if(session()->has('message'))
                 <br><br>
                 <div class="alert alert-success alert-dismissible">
@@ -50,34 +50,20 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Project Name</th>
-                  <th>Start Date</th>
-                  <th>Due Date</th>
-                  <th>Finish Date</th>
-                  <th>Status</th>
+                  <th>Project Status Name</th>                
+                  <th>Created By</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php $no = 0; foreach ($project as $key => $value) { $no++; ?>
+                <?php $no = 0; foreach ($project_status as $key => $value) { $no++; ?>
 	                <tr>
                     <td>{{ $no }}</td>
-	                  <td>{{ $value->project_name }}</td>
-	                  <td>{{ $value->start_date}}</td>
-	                  <td>{{ $value->due_date}}</td>
-	                  <td>{{ $value->finish_date}}</td>
-	                  <td>
-	                  	<?php  
-	                  		if ($value->status == 1) { ?>
-	                  			<small class="label label-info">Requirements</small>
-	                  		<?php } else{ ?>
-	                  			<small class="label label-warning">Analysis</small>
-	                  		<?php }
-	                  	?>
-	                  </td>
+	                  <td>{{ $value->project_status_name }}</td>	             
+	                  <td>{{ $value->created_by }}</td>
                     <td>
                       <a href=""><i class="fa fa-search"></i></a> - 
-                      <a href="{{ route('update_project.update', $value->id ) }}"><i class="fa fa-edit"></i></a> - 
+                      <a href="{{ route('update_project_status.update', $value->id ) }}"><i class="fa fa-edit"></i></a> - 
                       <a href=""><i class="fa fa-trash-o"></i></a>
                     </td>
 	                </tr>                   	

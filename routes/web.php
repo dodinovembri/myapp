@@ -19,7 +19,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/requirement', 'HomeController@requirement')->name('requirement');
 Route::get('/analysis', 'HomeController@analysis')->name('analysis');
-Route::get('/design', 'HomeController@design')->name('design');
 Route::get('/maintanance', 'HomeController@maintanance')->name('maintanance');
 Route::get('/set_session/{id}', 'HomeController@set_session')->name('set_session');
 
@@ -30,8 +29,32 @@ Route::get('project/create', [
 Route::post('project/postcreate', [
     'as' => 'project.postcreate', 'uses' => 'HomeController@project_postcreate'
 ]);
+Route::get('update_project/update/{id}', [
+    'as' => 'update_project.update', 'uses' => 'HomeController@update_project_view'
+]);
+Route::post('update_project/postcreate/{id}', [
+    'as' => 'update_project.postcreate', 'uses' => 'HomeController@update_project_postcreate'
+]);
 
 
+// for project status
+Route::get('/project_status', 'HomeController@project_status')->name('project_status');
+Route::get('project_status/create', [
+    'as' => 'project_status.create', 'uses' => 'HomeController@project_status_create'
+]);
+Route::post('project_status/postcreate', [
+    'as' => 'project_status.postcreate', 'uses' => 'HomeController@project_status_postcreate'
+]);
+Route::get('update_project_status/update/{id}', [
+    'as' => 'update_project_status.update', 'uses' => 'HomeController@update_project_status_view'
+]);
+Route::post('update_project_status/postcreate/{id}', [
+    'as' => 'update_project_status.postcreate', 'uses' => 'HomeController@update_project_status_postcreate'
+]);
+
+
+
+// 
 Route::get('requirement/create', [
     'as' => 'requirement.create', 'uses' => 'HomeController@requirement_create'
 ]);
@@ -39,7 +62,7 @@ Route::post('requirement/postcreate', [
     'as' => 'requirement.postcreate', 'uses' => 'HomeController@requirement_postcreate'
 ]);
 
-
+Route::get('/design', 'HomeController@design')->name('design');
 Route::get('design/create', [
     'as' => 'design.create', 'uses' => 'HomeController@design_create'
 ]);

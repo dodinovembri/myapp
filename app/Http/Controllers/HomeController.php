@@ -13,6 +13,7 @@ use App\Model\ProjectModel;
 use App\Model\DesignTypeModel;
 use App\Model\DeveloperModel;
 use App\Model\TestingDocumentType;
+use App\Model\ProjectStatus;
 use Auth;
 
 
@@ -70,7 +71,7 @@ class HomeController extends Controller
     {
         if (session()->get('project_now')) {
             $id = session()->get('project_now');
-            $data['design'] = DesignModel::where('id_project', $id)->get();
+            $data['design'] = DesignModel::select('design.*', 'design_type.design_type_name as design_type_name')->join('design_type', 'design.id_design_type', '=', 'design_type.id')->where('design.id_project', '=', $id)->get();
         }
 
         return view('design.index',  $data);
@@ -80,7 +81,7 @@ class HomeController extends Controller
     {
         if (session()->get('project_now')) {
             $id = session()->get('project_now');
-            $data['implementation'] = ImplementationModel::where('id_project', $id)->get();
+            $data['implementation'] = ImplementationModel::select('task.*', 'developer.full_name as full_name')->join('developer', 'task.id_developer', '=', 'developer.id')->where('task.id_project', '=', $id)->get();
         }
 
         return view('implementation.index',  $data);
@@ -111,7 +112,13 @@ class HomeController extends Controller
     {
         $data['project'] = ProjectModel::all();
         return view('project.index', $data);
-    }   
+    }  
+
+    public function project_status()
+    {
+        $data['project_status'] = ProjectStatus::all();
+        return view('project_status.index', $data);
+    }       
 
     public function set_session($id)
     {        
@@ -134,6 +141,11 @@ class HomeController extends Controller
     {        
         return view('project.create');
     } 
+
+    public function project_status_create()
+    {        
+        return view('project_status.create');
+    }     
 
     public function implementation_create()
     {        
@@ -166,6 +178,7 @@ class HomeController extends Controller
     {
         $insert = new RequirementModel();
         $insert->id_project = session()->get('project_now');
+        $insert->title = $request->title;
         $insert->requirement = $request->content_requirement;
         $insert->created_by = Auth::user()->email;
         $insert->created_at = date('Y-m-d h:m:s');
@@ -200,6 +213,53 @@ class HomeController extends Controller
         return redirect()->route('project')->withMessage('Project Success Added!');
     }
 
+    public function project_status_postcreate(Request $request)
+    {
+        $insert = new ProjectStatus();        
+        $insert->project_status_name = $request->project_status_name;        
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->created_by = Auth::user()->email;
+        $insert->save();
+
+        return redirect()->route('project_status')->withMessage('Project Status Success Added!');
+    }
+
+    public function update_project_view($id)
+    {        
+        $data['project'] = ProjectModel::find($id);
+        return view('project.edit', $data);
+    }    
+
+    public function update_project_status_view($id)
+    {        
+        $data['project_status'] = ProjectStatus::find($id);
+        return view('project_status.edit', $data);
+    }      
+
+    public function update_project_postcreate(Request $request, $id)
+    {        
+        $update = ProjectModel::find($id);                    
+        $update->due_date = $request->due_date;        
+        $update->finish_date = $request->finish_date;
+        $update->status = $request->project_status;
+        $update->updated_at = date('Y-m-d h:m:s');
+        $update->updated_by = Auth::user()->email;
+        $update->update();
+
+        return redirect()->route('project')->withMessage('Project Success Updated!');
+    }  
+
+    public function update_project_status_postcreate(Request $request, $id)
+    {        
+        $update = ProjectStatus::find($id);                    
+        $update->project_status_name = $request->project_status_name;                
+        $update->updated_at = date('Y-m-d h:m:s');
+        $update->updated_by = Auth::user()->email;
+        $update->update();
+
+        return redirect()->route('project_status')->withMessage('Project Status Success Updated!');
+    }        
+
     public function implementation_postcreate(Request $request)
     {
         $insert = new ImplementationModel();        
@@ -214,6 +274,17 @@ class HomeController extends Controller
         $insert->save();
 
         return redirect()->route('implementation')->withMessage('Task Success Added!');
+    }
+
+    public function developer_postcreate(Request $request)
+    {
+        $insert = new DeveloperModel();                
+        $insert->full_name = $request->full_name;    
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('developer')->withMessage('Developer Success Added!');
     }
 
     public function testing_postcreate(Request $request)

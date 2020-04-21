@@ -50,15 +50,17 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Project Name</th>
+                    <th>No</th>
+                    <th>Title</th>
                     <th>Requirement</th>
                     <th>Created By</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <?php foreach ($requirement as $key => $value) { ?>
+                  <?php $no = 0; foreach ($requirement as $key => $value) { $no++; ?>
   	                <tr>
-  	                  <td>{{ $value->id_project }}</td>
+  	                  <td>{{ $no }}</td>
+                      <td>{{ $value->title }}</td>
   	                  <td>{{ $value->requirement }}</td>
   	                  <td>{{ $value->created_by}}</td>	                  	                  
   	                </tr>                   	

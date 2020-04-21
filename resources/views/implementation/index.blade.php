@@ -50,8 +50,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>No</th>
-                    <th>Project Name</th>                    
+                    <th>No</th>                                    
                     <th>Developer</th>
                     <th>Task Name</th>
                     <th>Task Detail</th>
@@ -60,21 +59,26 @@
                     <th>Finish Date</th>
                     <th>Status</th>
                     <th>Ket</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php $no = 0; foreach ($implementation as $key => $value) { $no++; ?>
   	                <tr>
-                      <td>{{ $no }}</td>
-  	                  <td>{{ $value->id_project }}</td>  	                  
-                      <td>{{ $value->id_developer }}</td>                                        
+                      <td>{{ $no }}</td>  	                                 
+                      <td>{{ $value->full_name }}</td>                                        
                       <td>{{ $value->task_name }}</td>                                        
                       <td>{{ $value->task_detail }}</td>                                        
                       <td>{{ $value->start_date }}</td>                                        
                       <td>{{ $value->due_date}}</td>                                        
                       <td>{{ $value->finish_date }}</td>                                        
                       <td>{{ $value->status }}</td>                                        
-  	                  <td>{{ $value->ket }}</td>	                  	                  
+  	                  <td>{{ $value->ket }}</td>	
+                      <td>
+                        <a href=""><i class="fa fa-search"></i></a> - 
+                        <a href="{{ route('update_project.update', $value->id ) }}"><i class="fa fa-edit"></i></a> - 
+                        <a href=""><i class="fa fa-trash-o"></i></a>
+                      </td>                  	                  
   	                </tr>                   	
                   <?php } ?>          
                   </tbody>

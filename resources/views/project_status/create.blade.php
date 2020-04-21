@@ -29,17 +29,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" method="POST" action="{{route('requirement.postcreate')}}">              
+              <form role="form" method="POST" action="{{route('project_status.postcreate')}}">              
                 @csrf
                 <div class="form-group">
-                  <label>Title</label>
-                  <input type="text" class="form-control" name="title" placeholder="Enter ..." required>
-                </div>                
-                <!-- textarea -->
-                <div class="form-group">
-                  <label>Requirement</label>
-                  <textarea name="content_requirement" class="form-control" rows="7" placeholder="Enter ..." required></textarea>
-                </div>
+                  <label>Project Status Name</label>
+                  <input type="text" class="form-control" name="project_status_name" placeholder="Enter ..." required>
+                </div>                                
                 <br>
                 <button type="submit" class="btn btn-success">Save</button>
                 <button type="button" class="btn btn-danger">Cancel</button>

@@ -29,25 +29,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" method="POST" action="{{route('design.postcreate')}}">              
+              <form role="form" method="POST" action="{{route('developer.postcreate')}}">              
                 @csrf
                 <div class="form-group">
-                  <label>Design Type</label>
-                  <select class="form-control" name="design_type" required>
-                    <option>Select</option>
-                    <?php foreach ($design_type as $key => $value) { ?>
-                      <option value="{{ $value->id }}">{{ $value->design_type_name}}</option>
-                    <?php } ?>                    
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Design Name</label>
-                  <input type="text" class="form-control" name="design_name" placeholder="Enter ..." required>
-                </div>              
-                <div class="form-group">
-                  <label>Url Design</label>
-                  <input type="text" class="form-control" name="design_url" placeholder="Enter ..." required>
-                </div>                  
+                  <label>Full Name</label>
+                  <input type="text" class="form-control" name="full_name" placeholder="Enter ..." required>
+                </div>                               
                 <br>
                 <button type="submit" class="btn btn-success">Save</button>
                 <button type="button" class="btn btn-danger">Cancel</button>

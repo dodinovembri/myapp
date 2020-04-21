@@ -49,8 +49,8 @@
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th>Project Name</th>                    
+                  <tr>        
+                    <th>No</th>                            
                     <th>Design Type</th>
                     <th>Design Name</th>
                     <th>Design URL</th>
@@ -58,10 +58,10 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <?php foreach ($design as $key => $value) { ?>
+                  <?php $no = 0; foreach ($design as $key => $value) { $no++; ?>
   	                <tr>
-                      <td>{{ $value->id_project }}</td>                     
-                      <td>{{ $value->id_design_type }}</td>                     
+                      <td>{{ $no }}</td>
+                      <td>{{ $value->design_type_name }}</td>                     
                       <td>{{ $value->design_name }}</td>                     
   	                  <td><u><a href="{{ $value->url_design }}" target="_blank">{{ $value->url_design }}</a></u></td>
   	                  <td>{{ $value->created_at }}</td>	                  	                  
