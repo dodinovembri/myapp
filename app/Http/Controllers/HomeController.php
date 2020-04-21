@@ -15,6 +15,7 @@ use App\Model\DeveloperModel;
 use App\Model\TestingDocumentType;
 use App\Model\ProjectStatus;
 use App\Model\ServerInformation;
+use App\Model\BastModel;
 use Auth;
 
 
@@ -178,7 +179,12 @@ class HomeController extends Controller
     public function server_information_create()
     {                
         return view('server_information.create');
-    }     
+    }    
+
+    public function bast_create()
+    {                
+        return view('bast.create');
+    }         
 
     public function requirement_postcreate(Request $request)
     {
@@ -346,7 +352,21 @@ class HomeController extends Controller
         $insert->save();
 
         return redirect()->route('server_information')->withMessage('Server Information Success Added!');
-    }                     
+    }  
+
+    public function bast_postcreate(Request $request)
+    {
+        $insert = new BastModel();                
+        $insert->id_project = session()->get('project_now'); 
+        $insert->bast_name = $request->bast_name;   
+        $insert->bast_to = $request->bast_to;   
+        $insert->bast_url = $request->bast_url;   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('bast')->withMessage('Berita Acara Serah Terima Success Added!');
+    }                         
        
 
     public function user()
@@ -383,5 +403,15 @@ class HomeController extends Controller
 
         return view('server_information.index', $data);
     }
+
+    public function bast()
+    {
+        if (session()->get('project_now')) {
+            $id = session()->get('project_now');        
+            $data['bast'] = BastModel::where('id_project', $id)->get();
+        }
+
+        return view('bast.index', $data);
+    }    
 
 }

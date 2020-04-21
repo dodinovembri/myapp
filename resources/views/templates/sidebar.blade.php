@@ -69,7 +69,18 @@
             <i class="fa fa-laptop"></i>
             <span>Server Information</span>            
           </a>         
-        </li>        
+        </li>  
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Document</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('bast') }}"><i class="fa fa-circle-o"></i> Berita Acara Serah Terima</a></li>           
+          </ul>
+        </li>               
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Setting</span>

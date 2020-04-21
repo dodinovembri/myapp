@@ -124,3 +124,13 @@ Route::get('server_information/create', [
 Route::post('server_information/postcreate', [
     'as' => 'server_information.postcreate', 'uses' => 'HomeController@server_information_postcreate'
 ]);
+
+
+// bast
+Route::get('/bast', 'HomeController@bast')->name('bast');
+Route::get('bast/create', [
+    'as' => 'bast.create', 'uses' => 'HomeController@bast_create'
+]);
+Route::post('bast/postcreate', [
+    'as' => 'bast.postcreate', 'uses' => 'HomeController@bast_postcreate'
+]);
