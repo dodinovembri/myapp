@@ -376,7 +376,11 @@ class HomeController extends Controller
 
     public function server_information()
     {
-        $data['server_information'] = ServerInformation::all();
+        if (session()->get('project_now')) {
+            $id = session()->get('project_now');        
+            $data['server_information'] = ServerInformation::where('id_project', $id)->get();
+        }
+
         return view('server_information.index', $data);
     }
 
