@@ -65,20 +65,20 @@
                       <td>{{ $no }}</td>  	                                 
                       <td>{{ $value->server_name }}</td>                                        
                       <td>{{ $value->server_ip }}</td>                                        
-                      <td>{{ $value->server_url }}</td>                                        
-                      <td>{{ $value->server_type }}</td>                                        
-                      <td>{{ $value->laravel_verison }}</td>                                        
+                      <td>{{ $value->server_url }}</td>                                                              
                       <td>
-                        <?php if ($value->php_version == 1) { ?>
+                        <?php if ($value->server_type == 1) { ?>
                           <small class="label label-info">Development</small>
-                        <?php } elseif ($value->php_version == 2) { ?>
+                        <?php } elseif ($value->server_type == 2) { ?>
                           <small class="label label-success">Staging</small>                          
-                        <?php }elseif ($value->php_version == 3) { ?>
+                        <?php }elseif ($value->server_type == 3) { ?>
                           <small class="label label-danger">Production</small>                          
                         <?php }else{ ?>
                           <small class="label label-info">Wrong Configuration</small>                          
                         <?php } ?>
-                      </td>                                                             	                 	                  
+                      </td>                                                              
+                      <td>{{ $value->laravel_verison }}</td>                                        
+                      <td>{{ $value->php_version }}</td>                                                             	                 	                  
   	                </tr>                   	
                   <?php } ?>          
                   </tbody>
