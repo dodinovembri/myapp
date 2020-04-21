@@ -64,6 +64,12 @@
             <span>Projects</span>            
           </a>         
         </li>
+        <li>
+          <a href="{{ route('server_information') }}">
+            <i class="fa fa-laptop"></i>
+            <span>Server Information</span>            
+          </a>         
+        </li>        
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Setting</span>

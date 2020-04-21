@@ -115,3 +115,12 @@ Route::get('testing_document_type/create', [
 Route::post('testing_document_type/postcreate', [
     'as' => 'testing_document_type.postcreate', 'uses' => 'HomeController@testing_document_type_postcreate'
 ]);
+
+
+Route::get('/server_information', 'HomeController@server_information')->name('server_information');
+Route::get('server_information/create', [
+    'as' => 'server_information.create', 'uses' => 'HomeController@server_information_create'
+]);
+Route::post('server_information/postcreate', [
+    'as' => 'server_information.postcreate', 'uses' => 'HomeController@server_information_postcreate'
+]);

@@ -14,6 +14,7 @@ use App\Model\DesignTypeModel;
 use App\Model\DeveloperModel;
 use App\Model\TestingDocumentType;
 use App\Model\ProjectStatus;
+use App\Model\ServerInformation;
 use Auth;
 
 
@@ -174,6 +175,11 @@ class HomeController extends Controller
         return view('testing_document_type.create');
     } 
 
+    public function server_information_create()
+    {                
+        return view('server_information.create');
+    }     
+
     public function requirement_postcreate(Request $request)
     {
         $insert = new RequirementModel();
@@ -323,7 +329,25 @@ class HomeController extends Controller
         $insert->save();
 
         return redirect()->route('testing_document_type')->withMessage('Testing Dcument Type Success Added!');
-    }                 
+    }                         
+
+    public function server_information_postcreate(Request $request)
+    {
+        $insert = new ServerInformation();                
+        $insert->id_project = session()->get('project_now'); 
+        $insert->server_name = $request->server_name;   
+        $insert->server_ip = $request->server_ip;   
+        $insert->server_url = $request->server_url;   
+        $insert->server_type = $request->server_type;   
+        $insert->laravel_verison = $request->laravel_verison;   
+        $insert->php_version = $request->php_version;   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('server_information')->withMessage('Server Information Success Added!');
+    }                     
+       
 
     public function user()
     {
@@ -348,5 +372,12 @@ class HomeController extends Controller
     {
         $data['testing_document_type'] = TestingDocumentType::all();
         return view('testing_document_type.index', $data);
-    }    
+    }
+
+    public function server_information()
+    {
+        $data['server_information'] = ServerInformation::all();
+        return view('server_information.index', $data);
+    }
+
 }
