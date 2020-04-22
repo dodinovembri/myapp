@@ -493,7 +493,7 @@ class HomeController extends Controller
     {
         if (session()->get('project_now')) {
             $id = session()->get('project_now');        
-            $data['account'] = AccountModel::select('account.*', 'account_type.account_type_name as account_type_name')->join('account_type', 'account.id_account_type', '=', 'account_type.id')->get();
+            $data['account'] = AccountModel::select('account.*', 'account_type.account_type_name as account_type_name')->join('account_type', 'account.id_account_type', '=', 'account_type.id')->where('account.id_project', '=', $id)->get();
         }
 
         return view('account.index', $data);
