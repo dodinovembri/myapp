@@ -65,7 +65,7 @@
                       <td>{{ $no }}</td>  	                                 
                       <td>{{ $value->server_name }}</td>                                        
                       <td>{{ $value->server_ip }}</td>                                        
-                      <td>{{ $value->server_url }}</td>                                                              
+                      <td><u><b><a href="{{ $value->server_url }}" target="_blank">SER-00{{$value->id}}</a></b></u></td>                                                              
                       <td>
                         <?php if ($value->server_type == 1) { ?>
                           <small class="label label-info">Development</small>

@@ -66,7 +66,7 @@
                       <td>{{ $no }}</td>                                                    
                       <td>{{ $value->environment_name }}</td>  	                                                
                       <td>{{ $value->account_type_name }}</td>                                                              
-                      <td>{{ $value->link_url }}</td>                                                              
+                      <td><u><b><a href="{{ $value->link_url }}" target="_blank">LINK-00{{$value->id}}</a></b></u></td>
                       <td>{{ $value->username }}</td>                                                              
                       <td>{{ $value->password }}</td>                                                              
                       <td>{{ $value->ket }}</td>                                                              
