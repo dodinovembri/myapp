@@ -79,6 +79,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('bast') }}"><i class="fa fa-circle-o"></i> Berita Acara Serah Terima</a></li>           
+            <li><a href="{{ route('transfer_knowledge') }}"><i class="fa fa-circle-o"></i> Transfer Knowledge</a></li>           
           </ul>
         </li>               
         <li class="treeview">

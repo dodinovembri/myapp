@@ -16,6 +16,7 @@ use App\Model\TestingDocumentType;
 use App\Model\ProjectStatus;
 use App\Model\ServerInformation;
 use App\Model\BastModel;
+use App\Model\TransferKnowledgeModel;
 use Auth;
 
 
@@ -184,7 +185,13 @@ class HomeController extends Controller
     public function bast_create()
     {                
         return view('bast.create');
-    }         
+    }      
+    
+    public function transfer_knowledge_create()
+    {                
+        return view('transfer_knowledge.create');
+    }      
+           
 
     public function requirement_postcreate(Request $request)
     {
@@ -368,6 +375,18 @@ class HomeController extends Controller
         return redirect()->route('bast')->withMessage('Berita Acara Serah Terima Success Added!');
     }                         
        
+    public function transfer_knowledge_postcreate(Request $request)
+    {
+        $insert = new TransferKnowledgeModel();                
+        $insert->id_project = session()->get('project_now'); 
+        $insert->tf_name = $request->tf_name;           
+        $insert->tf_url = $request->tf_url;   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('transfer_knowledge')->withMessage('Transfer Knowledge Success Added!');
+    }        
 
     public function user()
     {
@@ -412,6 +431,17 @@ class HomeController extends Controller
         }
 
         return view('bast.index', $data);
-    }    
+    }   
+
+    public function transfer_knowledge()
+    {
+        if (session()->get('project_now')) {
+            $id = session()->get('project_now');        
+            $data['transfer_knowledge'] = TransferKnowledgeModel::where('id_project', $id)->get();
+        }
+
+        return view('transfer_knowledge.index', $data);
+    }        
+
 
 }

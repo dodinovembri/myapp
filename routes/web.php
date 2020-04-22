@@ -134,3 +134,12 @@ Route::get('bast/create', [
 Route::post('bast/postcreate', [
     'as' => 'bast.postcreate', 'uses' => 'HomeController@bast_postcreate'
 ]);
+
+// transfer knowledge
+Route::get('/transfer_knowledge', 'HomeController@transfer_knowledge')->name('transfer_knowledge');
+Route::get('transfer_knowledge/create', [
+    'as' => 'transfer_knowledge.create', 'uses' => 'HomeController@transfer_knowledge_create'
+]);
+Route::post('transfer_knowledge/postcreate', [
+    'as' => 'transfer_knowledge.postcreate', 'uses' => 'HomeController@transfer_knowledge_postcreate'
+]);
