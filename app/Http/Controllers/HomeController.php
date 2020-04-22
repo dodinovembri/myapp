@@ -203,6 +203,7 @@ class HomeController extends Controller
     public function account_create()
     {                
         $data['account_type'] = AccountTypeModel::all();        
+        $data['environment'] = EnvironmentModel::all();        
         return view('account.create', $data);
     } 
 
@@ -433,6 +434,7 @@ class HomeController extends Controller
     {
         $insert = new AccountModel();   
         $insert->id_project = session()->get('project_now');                             
+        $insert->id_environment = $request->id_environment;                   
         $insert->id_account_type = $request->id_account_type;                   
         $insert->link_url = $request->link_url;                   
         $insert->username = $request->username;                   
@@ -511,7 +513,7 @@ class HomeController extends Controller
     {
         if (session()->get('project_now')) {
             $id = session()->get('project_now');        
-            $data['account'] = AccountModel::select('account.*', 'account_type.account_type_name as account_type_name')->join('account_type', 'account.id_account_type', '=', 'account_type.id')->where('account.id_project', '=', $id)->get();
+            $data['account'] = AccountModel::select('account.*', 'account_type.account_type_name as account_type_name', 'environment.environment_name as environment_name')->join('account_type', 'account.id_account_type', '=', 'account_type.id')->join('environment', 'account.id_environment', '=', 'environment.id')->where('account.id_project', '=', $id)->get();
         }
 
         return view('account.index', $data);

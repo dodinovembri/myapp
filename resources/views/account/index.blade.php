@@ -51,6 +51,7 @@
                   <thead>
                   <tr>
                     <th>No</th>                                                       
+                    <th>Environment</th>                                                       
                     <th>Account Type Name</th>                    
                     <th>URL</th>                    
                     <th>Username</th>                    
@@ -62,7 +63,8 @@
                   <tbody>
                   <?php $no = 0; foreach ($account as $key => $value) { $no++; ?>
   	                <tr>
-                      <td>{{ $no }}</td>  	                                                
+                      <td>{{ $no }}</td>                                                    
+                      <td>{{ $value->environment_name }}</td>  	                                                
                       <td>{{ $value->account_type_name }}</td>                                                              
                       <td>{{ $value->link_url }}</td>                                                              
                       <td>{{ $value->username }}</td>                                                              

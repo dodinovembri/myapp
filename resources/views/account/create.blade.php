@@ -39,7 +39,16 @@
                       <option value="{{ $value->id }}">{{ $value->account_type_name}}</option>
                     <?php } ?>                    
                   </select>
-                </div>                
+                </div> 
+                <div class="form-group">
+                  <label>Environment Type</label>
+                  <select class="form-control" name="id_environment" required>
+                    <option>Select</option>
+                    <?php foreach ($environment as $key => $value) { ?>
+                      <option value="{{ $value->id }}">{{ $value->environment_name}}</option>
+                    <?php } ?>                    
+                  </select>
+                </div>                               
                 <div class="form-group">
                   <label>URL Link</label>
                   <input type="text" class="form-control" name="link_url" placeholder="Enter ..." required>
