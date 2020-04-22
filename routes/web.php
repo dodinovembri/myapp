@@ -143,3 +143,22 @@ Route::get('transfer_knowledge/create', [
 Route::post('transfer_knowledge/postcreate', [
     'as' => 'transfer_knowledge.postcreate', 'uses' => 'HomeController@transfer_knowledge_postcreate'
 ]);
+
+
+// accunt type
+Route::get('/account_type', 'HomeController@account_type')->name('account_type');
+Route::get('account_type/create', [
+    'as' => 'account_type.create', 'uses' => 'HomeController@account_type_create'
+]);
+Route::post('account_type/postcreate', [
+    'as' => 'account_type.postcreate', 'uses' => 'HomeController@account_type_postcreate'
+]);
+
+// accunt
+Route::get('/account', 'HomeController@account')->name('account');
+Route::get('account/create', [
+    'as' => 'account.create', 'uses' => 'HomeController@account_create'
+]);
+Route::post('account/postcreate', [
+    'as' => 'account.postcreate', 'uses' => 'HomeController@account_postcreate'
+]);

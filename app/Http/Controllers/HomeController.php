@@ -17,6 +17,8 @@ use App\Model\ProjectStatus;
 use App\Model\ServerInformation;
 use App\Model\BastModel;
 use App\Model\TransferKnowledgeModel;
+use App\Model\AccountTypeModel;
+use App\Model\AccountModel;
 use Auth;
 
 
@@ -190,8 +192,18 @@ class HomeController extends Controller
     public function transfer_knowledge_create()
     {                
         return view('transfer_knowledge.create');
-    }      
-           
+    }  
+
+    public function account_type_create()
+    {                
+        return view('account_type.create');
+    } 
+
+    public function account_create()
+    {                
+        $data['account_type'] = AccountTypeModel::all();        
+        return view('account.create', $data);
+    }                  
 
     public function requirement_postcreate(Request $request)
     {
@@ -386,7 +398,34 @@ class HomeController extends Controller
         $insert->save();
 
         return redirect()->route('transfer_knowledge')->withMessage('Transfer Knowledge Success Added!');
-    }        
+    } 
+
+    public function account_type_postcreate(Request $request)
+    {
+        $insert = new AccountTypeModel();                        
+        $insert->account_type_name = $request->account_type_name;                   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('account_type')->withMessage('Account Type Success Added!');
+    } 
+
+    public function account_postcreate(Request $request)
+    {
+        $insert = new AccountModel();   
+        $insert->id_project = session()->get('project_now');                             
+        $insert->id_account_type = $request->id_account_type;                   
+        $insert->link_url = $request->link_url;                   
+        $insert->username = $request->username;                   
+        $insert->password = $request->password;                   
+        $insert->ket = $request->ket;                   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('account')->withMessage('Account Success Added!');
+    }                
 
     public function user()
     {
@@ -441,7 +480,23 @@ class HomeController extends Controller
         }
 
         return view('transfer_knowledge.index', $data);
-    }        
+    } 
 
+    public function account_type()
+    {        
+        $data['account_type'] = AccountTypeModel::all();
+
+        return view('account_type.index', $data);
+    }            
+
+    public function account()
+    {
+        if (session()->get('project_now')) {
+            $id = session()->get('project_now');        
+            $data['account'] = AccountModel::select('account.*', 'account_type.account_type_name as account_type_name')->join('account_type', 'account.id_account_type', '=', 'account_type.id')->get();
+        }
+
+        return view('account.index', $data);
+    } 
 
 }

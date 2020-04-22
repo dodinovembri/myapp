@@ -78,6 +78,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="{{ route('account') }}"><i class="fa fa-circle-o"></i> Accounts</a></li>           
             <li><a href="{{ route('bast') }}"><i class="fa fa-circle-o"></i> Berita Acara Serah Terima</a></li>           
             <li><a href="{{ route('transfer_knowledge') }}"><i class="fa fa-circle-o"></i> Transfer Knowledge</a></li>           
           </ul>
@@ -95,6 +96,7 @@
             <li><a href="{{ route('design_type') }}"><i class="fa fa-circle-o"></i> Design Type</a></li>
             <li><a href="{{ route('testing_document_type') }}"><i class="fa fa-circle-o"></i> Testing Document Type</a></li>            
             <li><a href="{{ route('project_status') }}"><i class="fa fa-circle-o"></i> Project Status</a></li>            
+            <li><a href="{{ route('account_type') }}"><i class="fa fa-circle-o"></i> Account Type</a></li>            
           </ul>
         </li>        
         <li>         
