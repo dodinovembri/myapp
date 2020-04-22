@@ -91,12 +91,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Users</a></li>
-            <li><a href="{{ route('developer') }}"><i class="fa fa-circle-o"></i> Developers</a></li>
-            <li><a href="{{ route('design_type') }}"><i class="fa fa-circle-o"></i> Design Type</a></li>
-            <li><a href="{{ route('testing_document_type') }}"><i class="fa fa-circle-o"></i> Testing Document Type</a></li>            
-            <li><a href="{{ route('project_status') }}"><i class="fa fa-circle-o"></i> Project Status</a></li>            
             <li><a href="{{ route('account_type') }}"><i class="fa fa-circle-o"></i> Account Type</a></li>            
+            <li><a href="{{ route('design_type') }}"><i class="fa fa-circle-o"></i> Design Type</a></li>
+            <li><a href="{{ route('developer') }}"><i class="fa fa-circle-o"></i> Developers</a></li>
+            <li><a href="{{ route('environment') }}"><i class="fa fa-circle-o"></i> Environment</a></li>
+            <li><a href="{{ route('project_status') }}"><i class="fa fa-circle-o"></i> Project Status</a></li>            
+            <li><a href="{{ route('testing_document_type') }}"><i class="fa fa-circle-o"></i> Testing Document Type</a></li>            
+            <li><a href="#"><i class="fa fa-circle-o"></i> Users</a></li>
           </ul>
         </li>        
         <li>         

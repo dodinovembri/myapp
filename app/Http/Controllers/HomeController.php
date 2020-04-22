@@ -19,6 +19,7 @@ use App\Model\BastModel;
 use App\Model\TransferKnowledgeModel;
 use App\Model\AccountTypeModel;
 use App\Model\AccountModel;
+use App\Model\EnvironmentModel;
 use Auth;
 
 
@@ -203,7 +204,13 @@ class HomeController extends Controller
     {                
         $data['account_type'] = AccountTypeModel::all();        
         return view('account.create', $data);
-    }                  
+    } 
+
+    public function environment_create()
+    {                
+        $data['environment_create'] = EnvironmentModel::all();        
+        return view('environment.create', $data);
+    }                      
 
     public function requirement_postcreate(Request $request)
     {
@@ -411,6 +418,17 @@ class HomeController extends Controller
         return redirect()->route('account_type')->withMessage('Account Type Success Added!');
     } 
 
+    public function environment_postcreate(Request $request)
+    {
+        $insert = new EnvironmentModel();                        
+        $insert->environment_name = $request->environment_name;                   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('environment')->withMessage('Environment Success Added!');
+    }     
+
     public function account_postcreate(Request $request)
     {
         $insert = new AccountModel();   
@@ -499,4 +517,10 @@ class HomeController extends Controller
         return view('account.index', $data);
     } 
 
+    public function environment()
+    {        
+        $data['environment'] = EnvironmentModel::all();
+
+        return view('environment.index', $data);
+    }
 }
