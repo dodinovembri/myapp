@@ -71,7 +71,7 @@
             <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
+              <span class="info-box-text">Remaining Days</span>
               <span class="info-box-number">93,139</span>
             </div>
             <!-- /.info-box-content -->
@@ -81,6 +81,102 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+
+      <div class="row">
+        <div class="col-md-6">
+
+          <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Project Progress</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div>
+        <!-- /.col (LEFT) -->
+        <div class="col-md-6">
+          <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Progress This Week</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="progress-group">
+                <span class="progress-text">New</span>
+                <span class="progress-number"><b>160</b>/200</span>
+
+                <div class="progress sm">
+                  <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                </div>
+              </div>
+              <!-- /.progress-group -->
+              <div class="progress-group">
+                <span class="progress-text">On Progress</span>
+                <span class="progress-number"><b>310</b>/400</span>
+
+                <div class="progress sm">
+                  <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                </div>
+              </div>
+              <!-- /.progress-group -->
+              <div class="progress-group">
+                <span class="progress-text">Fixed</span>
+                <span class="progress-number"><b>480</b>/800</span>
+
+                <div class="progress sm">
+                  <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                </div>
+              </div>
+              <!-- /.progress-group -->
+              <div class="progress-group">
+                <span class="progress-text">Testing</span>
+                <span class="progress-number"><b>250</b>/500</span>
+
+                <div class="progress sm">
+                  <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="progress-group">
+                <span class="progress-text">Fine Tuning</span>
+                <span class="progress-number"><b>250</b>/500</span>
+
+                <div class="progress sm">
+                  <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="progress-group">
+                <span class="progress-text">Finish</span>
+                <span class="progress-number"><b>250</b>/500</span>
+
+                <div class="progress sm">
+                  <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                </div>
+              </div>                            
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div>
+        <!-- /.col (RIGHT) -->
+      </div>      
 
     </section>
     <!-- /.content -->

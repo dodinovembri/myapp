@@ -20,6 +20,8 @@
 
   <link rel="stylesheet" href="{{ asset('tmp/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">  
 
+  <link rel="stylesheet" href="{{ asset('tmp/bower_components/morris.js/morris.css') }}">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -56,6 +58,9 @@
 <script src="{{ asset('tmp/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('tmp/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
+<script src="{{ asset('tmp/bower_components/raphael/raphael.min.js')}}"></script>
+<script src="{{ asset('tmp/bower_components/morris.js/morris.min.js')}}"></script>
+
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
@@ -71,6 +76,19 @@
       'autoWidth'   : false
     })
   })  
+
+      //DONUT CHART
+    var donut = new Morris.Donut({
+      element: 'sales-chart',
+      resize: true,
+      colors: ["#3c8dbc", "#f56954", "#00a65a"],
+      data: [
+        {label: "Download Sales", value: 12},
+        {label: "In-Store Sales", value: 30},
+        {label: "Mail-Order Sales", value: 20}
+      ],
+      hideHover: 'auto'
+    });
 </script>
 </body>
 </html>

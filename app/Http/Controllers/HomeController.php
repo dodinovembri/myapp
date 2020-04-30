@@ -48,6 +48,7 @@ class HomeController extends Controller
      */
     public function index()
     {        
+
         $id = session()->get('project_now');    
         $data['date_all'] = ProjectModel::where('id', $id)->first();
         return view('home', $data);
