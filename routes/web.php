@@ -21,7 +21,7 @@ Auth::routes([
 // Auth::routes();
 
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'PublicController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/requirement', 'HomeController@requirement')->name('requirement');
 Route::get('/analysis', 'HomeController@analysis')->name('analysis');
