@@ -23,22 +23,22 @@
                                                 <ul class="nav nav-pills" id="mainNav">
                                                     <li class="dropdown">
                                                         <a class="dropdown-item dropdown-toggle" href="index.html">
-                                                            Home
+                                                            About
                                                         </a>
                                                     </li>
                                                     <li class="dropdown dropdown-mega">
                                                         <a class="dropdown-item dropdown-toggle" href="elements.html">
-                                                            Elements
+                                                            Experience
                                                         </a>
                                                     </li>
                                                     <li class="dropdown">
                                                         <a class="dropdown-item dropdown-toggle active" href="#">
-                                                            Features
+                                                            Education
                                                         </a>
                                                     </li>
                                                     <li class="dropdown">
                                                         <a class="dropdown-item dropdown-toggle" href="#">
-                                                            Pages
+                                                            Skill
                                                         </a>
                                                     </li>
                                                     <li class="dropdown">
@@ -167,18 +167,18 @@
 
             <div role="main" class="main">
 
-            <section id="about-me" class="section section-no-border section-parallax custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="img/demos/resume/about-me/about-me-bg-1.jpg">
+            <section id="about-me" class="section section-no-border section-parallax custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="{{ asset('img') }}/{{ $user->background_picture }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 custom-sm-margin-bottom-1">
-                            <img src="img/demos/resume/about-me/me.jpg" class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4" alt />
+                            <img src="{{ asset('img') }}/{{ $user->profile_picture }}" class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4" alt />
                         </div>
                         <div class="col-lg-6 col-xl-5">
-                            <h1 class="text-color-primary custom-font-size-1">Adam Doe</h1>
-                            <p class="text-color-light font-weight-normal custom-font-size-2 custom-margin-bottom-1">Chief Product Officer at Okler Themes</p>
+                            <h1 class="text-color-primary custom-font-size-1">{{ $user->full_name }}</h1>
+                            <p class="text-color-light font-weight-normal custom-font-size-2 custom-margin-bottom-1">{{ $user->profession }}</p>
                             <span class="custom-about-me-infos">
-                                <span class="custom-text-color-1 text-uppercase">Greater New York area</span>
-                                <span class="custom-text-color-1 text-uppercase mb-3">Information Technology &amp; Services</span>
+                                <span class="custom-text-color-1 text-uppercase">{{ $user->location }}</span>
+                                <span class="custom-text-color-1 text-uppercase mb-3">{{ $user->job_departemen }}</span>
                                 <span class="custom-text-color-1 text-uppercase">
                                     <strong class="text-color-light">Previous: </strong>
                                     Front-End Developer at Porto
@@ -198,7 +198,7 @@
                 </div>
                 <ul class="social-icons custom-social-icons">
                     <li class="social-icons-facebook">
-                        <a href="http://www.facebook.com/" target="_blank" title="Facebook">
+                        <a href="{{ $user->fb_url }}" target="_blank" title="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </li>
@@ -258,15 +258,15 @@
                                         <ul class="custom-list-style-1 p-0 mb-0">
                                             <li>
                                                 <span class="text-color-dark">Birthday:</span>
-                                                <span class="custom-text-color-2">1990 October 2</span>
+                                                <span class="custom-text-color-2">{{ $user->birthday }}</span>
                                             </li>
                                             <li>
                                                 <span class="text-color-dark">Marital:</span>
-                                                <span class="custom-text-color-2">Single</span>
+                                                <span class="custom-text-color-2">{{ $user->marital }}</span>
                                             </li>
                                             <li>
                                                 <span class="text-color-dark">Nationality:</span>
-                                                <span class="custom-text-color-2">American</span>
+                                                <span class="custom-text-color-2">{{ $user->nationality }}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -278,11 +278,11 @@
                                             </li>
                                             <li>
                                                 <span class="text-color-dark">PHONE:</span>
-                                                <span class="custom-text-color-2"><a class="custom-text-color-2" href="tel:123456789">123-456-789</a></span>
+                                                <span class="custom-text-color-2"><a class="custom-text-color-2" href="tel:{{ $user->phone_number }}">{{ $user->phone_number }}</a></span>
                                             </li>
                                             <li>
-                                                <span class="text-color-dark">EMAIL:</span>
-                                                <span class="custom-text-color-2"><a class="custom-text-color-2" href="mailto:me@domain.com">me@domain.com</a></span>
+                                                <!-- <span class="text-color-dark">EMAIL:</span> -->
+                                                <span class="custom-text-color-2"><a class="custom-text-color-2" href="mailto:{{ $user->email }}">{{ $user->email }}</a></span>
                                             </li>
                                         </ul>
                                     </div>
@@ -291,7 +291,7 @@
 
                             <h2 class="text-color-quaternary font-weight-extra-bold text-uppercase">About Me</h2>
 
-                            <p class="custom-text-color-2">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                            <p class="custom-text-color-2">{{ $user->description }}</p>
 
                             <div class="about-me-more" id="aboutMeMore">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu. Praesent aliquam velit vel libero dictum, non sollicitudin lectus mollis. Morbi sollicitudin auctor gravida. Vivamus vitae dui non lorem euismod pretium. Morbi congue sem sed ex iaculis, nec mattis felis pretium. Nullam molestie libero id odio blandit sodales. Suspendisse non mauris et felis molestie placerat aliquet a risus. Aliquam ac leo tempus, hendrerit eros mollis, gravida est.</p>
@@ -315,75 +315,31 @@
                             <h2 class="text-color-quaternary text-uppercase font-weight-extra-bold">Experience</h2>
                             <section class="timeline custom-timeline" id="timeline">
                                 <div class="timeline-body">
-                                    <article class="timeline-box right custom-box-shadow-2">
-                                        <div class="row">
-                                            <div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
-                                                <span class="from text-color-dark text-uppercase">
-                                                    From
-                                                    <span class="font-weight-semibold">Sep 2012</span>
-                                                </span>
-                                                <span class="to text-color-dark text-uppercase">
-                                                    To
-                                                    <span class="font-weight-semibold">Present</span>
-                                                </span>
-                                                <p class="text-color-dark">(3 Years 9 Months)</p>
-                                                <span class="company text-color-dark font-weight-semibold">
-                                                    Okler Themes
-                                                    <span class="company-location text-color-dark font-weight-normal text-uppercase">Greater New York</span>
-                                                </span>
+                                    <?php foreach ($experience as $key => $value) { ?>
+                                        <article class="timeline-box right custom-box-shadow-2">
+                                            <div class="row">
+                                                <div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+                                                    <span class="from text-color-dark text-uppercase">
+                                                        From
+                                                        <span class="font-weight-semibold">{{ $value->from_date }}</span>
+                                                    </span>
+                                                    <span class="to text-color-dark text-uppercase">
+                                                        To
+                                                        <span class="font-weight-semibold">{{ $value->to_date }}</span>
+                                                    </span>
+                                                    <p class="text-color-dark">(3 Years 9 Months)</p>
+                                                    <span class="company text-color-dark font-weight-semibold">
+                                                        {{ $value->company }}
+                                                        <span class="company-location text-color-dark font-weight-normal text-uppercase">{{ $value->location }}</span>
+                                                    </span>
+                                                </div>
+                                                <div class="experience-description col-lg-9 col-sm-7 bg-color-light">
+                                                    <h4 class="text-color-dark font-weight-semibold">{{ $value->position }}</h4>
+                                                    <p class="custom-text-color-2">{{ $value->description }}</p>
+                                                </div>
                                             </div>
-                                            <div class="experience-description col-lg-9 col-sm-7 bg-color-light">
-                                                <h4 class="text-color-dark font-weight-semibold">Chief Product Officer</h4>
-                                                <p class="custom-text-color-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu.</p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="timeline-box right custom-box-shadow-2">
-                                        <div class="row">
-                                            <div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
-                                                <span class="from text-color-dark text-uppercase">
-                                                    From
-                                                    <span class="font-weight-semibold">Sep 2012</span>
-                                                </span>
-                                                <span class="to text-color-dark text-uppercase">
-                                                    To
-                                                    <span class="font-weight-semibold">Present</span>
-                                                </span>
-                                                <p class="text-color-dark">(3 Years 9 Months)</p>
-                                                <span class="company text-color-dark font-weight-semibold">
-                                                    Okler Themes
-                                                    <span class="company-location text-color-dark font-weight-normal text-uppercase">Greater New York</span>
-                                                </span>
-                                            </div>
-                                            <div class="experience-description col-lg-9 col-sm-7 bg-color-light">
-                                                <h4 class="text-color-dark font-weight-semibold">Chief Product Officer</h4>
-                                                <p class="custom-text-color-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu.</p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="timeline-box right custom-box-shadow-2">
-                                        <div class="row">
-                                            <div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
-                                                <span class="from text-color-dark text-uppercase">
-                                                    From
-                                                    <span class="font-weight-semibold">Sep 2012</span>
-                                                </span>
-                                                <span class="to text-color-dark text-uppercase">
-                                                    To
-                                                    <span class="font-weight-semibold">Present</span>
-                                                </span>
-                                                <p class="text-color-dark">(3 Years 9 Months)</p>
-                                                <span class="company text-color-dark font-weight-semibold">
-                                                    Okler Themes
-                                                    <span class="company-location text-color-dark font-weight-normal text-uppercase">Greater New York</span>
-                                                </span>
-                                            </div>
-                                            <div class="experience-description col-lg-9 col-sm-7 bg-color-light">
-                                                <h4 class="text-color-dark font-weight-semibold">Chief Product Officer</h4>
-                                                <p class="custom-text-color-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt nulla tortor, a imperdiet enim tristique nec. Nulla lobortis leo eget metus dapibus sodales. Sed placerat vitae dui vitae vehicula. Quisque in tincidunt ligula, nec dignissim arcu.</p>
-                                            </div>
-                                        </div>
-                                    </article>
+                                        </article>
+                                    <?php } ?>
                                     <div class="timeline-bar"></div>
                                 </div>
                             </section>
@@ -398,60 +354,18 @@
                         <div class="col">
                             <h2 class="text-color-quaternary text-uppercase font-weight-extra-bold m-0">Education</h2>
                             <div class="owl-carousel nav-bottom custom-dots-style-1 mb-0" data-plugin-options="{'items': 1, 'loop': false, 'dots': true, 'nav': false}">
-                                <div class="row">
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-light custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-dark m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2017</strong>
+                                <?php foreach ($education as $key => $value) { ?>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12 pb-4">
+                                            <div class="custom-box-details-2 bg-color-light custom-box-shadow-3">
+                                                <i class="icon-graduation icons text-color-primary"></i>
+                                                <h4 class="font-weight-semibold text-color-dark m-0">{{ $value->university }}</h4>
+                                                <p class="custom-text-color-2 mb-1">{{ $value->jurusan }}</p>
+                                                <strong class="text-color-primary">{{ $value->from_date }} - {{ $value->to_date }}</strong>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-light custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-dark m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2017</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-light custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-dark m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2017</strong>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-light custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-dark m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2017</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-light custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-dark m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2017</strong>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-6 pb-4">
-                                        <div class="custom-box-details-2 bg-color-light custom-box-shadow-3">
-                                            <i class="icon-graduation icons text-color-primary"></i>
-                                            <h4 class="font-weight-semibold text-color-dark m-0">Porto University</h4>
-                                            <p class="custom-text-color-2 mb-1">Master of Information Technology</p>
-                                            <strong class="text-color-primary">2001-2017</strong>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -466,59 +380,14 @@
                                 <div class="col-lg-6">
                                     <h2 class="text-color-quaternary text-uppercase font-weight-extra-bold">Skills & Language</h2>
                                     <div class="progress-bars custom-progress-bars">
-                                        <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
-                                            <span>Start Up</span>
-                                        </div>
-
-                                        <div class="progress mb-2">
-                                            <div class="progress-bar" data-appear-progress-animation="60%"></div>
-                                        </div>
-                                        <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
-                                            <span>Innovation</span>
-                                        </div>
-                                        <div class="progress mb-2">
-                                            <div class="progress-bar" data-appear-progress-animation="80%" data-appear-animation-delay="300"></div>
-                                        </div>
-                                        <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
-                                            <span>Products</span>
-                                        </div>
-                                        <div class="progress mb-2">
-                                            <div class="progress-bar" data-appear-progress-animation="70%" data-appear-animation-delay="600"></div>
-                                        </div>
-                                        <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
-                                            <span>CSS</span>
-                                        </div>
-                                        <div class="progress mb-2">
-                                            <div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="progress-bars custom-progress-bars custom-md-margin-top-1">
-                                        <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
-                                            <span>Javascript</span>
-                                        </div>
-                                        <div class="progress mb-2">
-                                            <div class="progress-bar" data-appear-progress-animation="60%"></div>
-                                        </div>
-                                        <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
-                                            <span>Business</span>
-                                        </div>
-                                        <div class="progress mb-2">
-                                            <div class="progress-bar" data-appear-progress-animation="80%" data-appear-animation-delay="300"></div>
-                                        </div>
-                                        <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
-                                            <span>E-commerce</span>
-                                        </div>
-                                        <div class="progress mb-2">
-                                            <div class="progress-bar" data-appear-progress-animation="70%" data-appear-animation-delay="600"></div>
-                                        </div>
-                                        <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
-                                            <span>Creative</span>
-                                        </div>
-                                        <div class="progress mb-2">
-                                            <div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900"></div>
-                                        </div>
+                                        <?php foreach ($skill as $key => $value) { ?>                                        
+                                            <div class="progress-label text-color-dark font-weight-semibold text-uppercase text-2">
+                                                <span>{{ $value->skill_name }}</span>
+                                            </div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar" data-appear-progress-animation="{{ $value->percent }}%"></div>
+                                            </div>                                            
+                                        <?php } ?>                                        
                                     </div>
                                 </div>
                             </div>
@@ -530,7 +399,7 @@
                                         <h4 class="text-color-dark">Languages</h4>
                                         <ul class="custom-list-style-1 p-0">
                                             <li>
-                                                <span class="font-weight-semibold custom-max-width-1 text-color-dark"><img src="img/blank.gif" class="flag flag-us mr-1" alt="English">English:</span>
+                                                <span class="font-weight-semibold custom-max-width-1 text-color-dark">English:</span>
                                                 <span class="custom-text-color-2">Advanced</span>
                                             </li>
                                             <li>

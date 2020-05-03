@@ -100,6 +100,21 @@
             <li><a href="#"><i class="fa fa-circle-o"></i> Users</a></li>
           </ul>
         </li>        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Setting Front End</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('account_type') }}"><i class="fa fa-circle-o"></i> About Me</a></li>            
+            <li><a href="{{ route('design_type') }}"><i class="fa fa-circle-o"></i> Experience</a></li>
+            <li><a href="{{ route('developer') }}"><i class="fa fa-circle-o"></i> Education</a></li>
+            <li><a href="{{ route('environment') }}"><i class="fa fa-circle-o"></i> Skills</a></li>
+            <li><a href="{{ route('project_status') }}"><i class="fa fa-circle-o"></i> Portofolio</a></li>            
+          </ul>
+        </li>        
         <li>         
       </ul>
     </section>
