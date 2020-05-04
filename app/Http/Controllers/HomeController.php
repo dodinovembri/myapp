@@ -20,6 +20,7 @@ use App\Model\TransferKnowledgeModel;
 use App\Model\AccountTypeModel;
 use App\Model\AccountModel;
 use App\Model\EnvironmentModel;
+use App\Model\MomModel;
 use Auth;
 
 
@@ -212,7 +213,13 @@ class HomeController extends Controller
     {                
         $data['environment_create'] = EnvironmentModel::all();        
         return view('environment.create', $data);
-    }                      
+    }
+
+    public function mom_create()
+    {                
+        $data['mom_create'] = MomModel::all();        
+        return view('mom.create', $data);
+    }                          
 
     public function requirement_postcreate(Request $request)
     {
@@ -429,7 +436,20 @@ class HomeController extends Controller
         $insert->save();
 
         return redirect()->route('environment')->withMessage('Environment Success Added!');
-    }     
+    } 
+
+    public function mom_postcreate(Request $request)
+    {
+        $insert = new MomModel();    
+        $insert->id_project = session()->get('project_now');                             
+        $insert->mom_name = $request->mom_name;                   
+        $insert->url_mom = $request->url_mom;                   
+        $insert->created_by = Auth::user()->email;
+        $insert->created_at = date('Y-m-d h:m:s');
+        $insert->save();
+
+        return redirect()->route('mom')->withMessage('Minutes Of Meeting Success Added!');
+    }         
 
     public function account_postcreate(Request $request)
     {
@@ -526,4 +546,11 @@ class HomeController extends Controller
 
         return view('environment.index', $data);
     }
+
+    public function mom()
+    {        
+        $data['mom'] = MomModel::all();
+
+        return view('mom.index', $data);
+    }    
 }

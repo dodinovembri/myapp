@@ -58,18 +58,6 @@
             <i class="fa fa-table"></i> <span>Maintanance</span>          
           </a>         
         </li>     
-        <li>
-          <a href="{{ route('project') }}">
-            <i class="fa fa-pie-chart"></i>
-            <span>Projects</span>            
-          </a>         
-        </li>
-        <li>
-          <a href="{{ route('server_information') }}">
-            <i class="fa fa-laptop"></i>
-            <span>Server Information</span>            
-          </a>         
-        </li>  
         <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Document</span>
@@ -80,7 +68,10 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('account') }}"><i class="fa fa-circle-o"></i> Accounts</a></li>           
             <li><a href="{{ route('bast') }}"><i class="fa fa-circle-o"></i> Berita Acara Serah Terima</a></li>           
+            <li><a href="{{ route('mom') }}"><i class="fa fa-circle-o"></i> Minutes Of Meeting</a></li>           
+            <li><a href="{{ route('server_information') }}"><i class="fa fa-circle-o"></i> Server Information</a></li>           
             <li><a href="{{ route('transfer_knowledge') }}"><i class="fa fa-circle-o"></i> Transfer Knowledge</a></li>           
+            <li><a href="{{ route('project') }}"><i class="fa fa-circle-o"></i> Projects</a></li>           
           </ul>
         </li>               
         <li class="treeview">

@@ -177,3 +177,12 @@ Route::get('environment/create', [
 Route::post('environment/postcreate', [
     'as' => 'environment.postcreate', 'uses' => 'HomeController@environment_postcreate'
 ]);
+
+// mom
+Route::get('/mom', 'HomeController@mom')->name('mom');
+Route::get('mom/create', [
+    'as' => 'mom.create', 'uses' => 'HomeController@mom_create'
+]);
+Route::post('mom/postcreate', [
+    'as' => 'mom.postcreate', 'uses' => 'HomeController@mom_postcreate'
+]);
